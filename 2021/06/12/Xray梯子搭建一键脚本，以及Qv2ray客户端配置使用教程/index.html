@@ -18,7 +18,7 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>创建博客 - Hexo</title>
+  <title>Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="创建博客">
+            <span class="h2" id="subtitle" title="">
               
             </span>
 
@@ -173,8 +173,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-06-08 20:18" pubdate>
-        June 8, 2021 pm
+      <time datetime="2021-06-12 20:51" pubdate>
+        June 12, 2021 pm
       </time>
     </span>
   
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      59 字
+      68 字
     </span>
   
 
@@ -225,31 +225,40 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">创建博客</h1>
+            <h1 style="display: none"></h1>
             
             <div class="markdown-body">
-              <h2 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h2><ol>
-<li>搭建环境git、node.js、hexo</li>
-<li>cmd进入hexo的文件夹 新建md$hexo new “博客命名”<br> 博客创建在source/_posts文件夹中</li>
-<li><div class="code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>我的的<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div></li>
-</ol>
-<hr>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h2 id="内容"><a href="#内容" class="headerlink" title=" 内容"></a> 内容</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a target="_blank" rel="noopener" href="http://www.xxxx.cn/">www.xxxx.cn</a></p>
+              <h2 id="Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程"><a href="#Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程" class="headerlink" title="Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程"></a>Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程</h2><p><font color=#999AAA >提示：开始前先准备<br>    1.购买一个vps（这里用的是vultr,别的也可以）<br>    2.购买一个域名<br>    3.下载sshr软件<br>    4.脚本安装Xray服务端</p>
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
+
+<h1 id="购买vps："><a href="#购买vps：" class="headerlink" title="购买vps："></a>购买vps：</h1><font color=black >
+  我现在用的vultr，首要原因可以随时删除服务器重建服务器，以达到换ip的效果，其次这是我见过有韩国日本节点的最便宜的一家，搭配联通宽带真的是无敌了。然后就是可以支付宝付款，很方便了。
+
+<p><font  color=red>首先注册vultr账号：vultr注册</font><br>注册好第一次进去会提示让你完善信息，首次使用之前需要充值最少10刀，之后进入控制台界面，点击products，然后点右上角的加号添加server。<br><img src="https://img-blog.csdnimg.cn/20210528171523578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述">如图配置就好，如果有韩国建议选择韩国得，ping值会低很多<br><img src="https://img-blog.csdnimg.cn/20210528171746964.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>注意这里一定换成旁边的Debian 9，不然证书申请会出问题<br><img src="https://img-blog.csdnimg.cn/20210528171908314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>然后选择5美元/每月得就够用了 dploy now 就好了。等一分钟就可以running<br><img src="https://img-blog.csdnimg.cn/20210528172240912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210528172322378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>记住ip、username、password</p>
+<h1 id="购买域名："><a href="#购买域名：" class="headerlink" title="购买域名："></a>购买域名：</h1><p>怎么购买域名我这里就不说了 解析选择上面得那个ip地址就好了<br>Xray同样与VMess，VLess，Trojan一样，也是走https，所以也需要有一个自己的域名为我们做掩护。</p>
+<p>买域名的地方也很多，国内主要是腾讯云和阿里云，域名不需要在国外供应商买，哪里买都一样（国内买需要实名认证，而且认证需要一些时间。介意的还是直接在godaddy买吧）。腾讯阿里都有新人优惠，第一次购买域名，像.club, .xyz之类的小众域名基本只要1块一年，很便宜了</p>
+<h1 id="脚本安装Xray服务端："><a href="#脚本安装Xray服务端：" class="headerlink" title="脚本安装Xray服务端："></a>脚本安装Xray服务端：</h1><p>这里下载putty为例 ，将ip填进去open<br><img src="https://img-blog.csdnimg.cn/20210528172839335.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>然后用刚刚记住得username和password登录(密码是隐藏复制右击在回车就好了)</p>
+<p>打开服务端后，安装脚本</p>
+<div class="code-wrapper"><pre><code class="hljs bash">wget -N --no-check-certificate <span class="hljs-string">&quot;https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh&quot;</span> &amp;&amp; chmod 700 /root/install.sh &amp;&amp; /root/install.sh</code></pre></div>
+<p><img src="https://img-blog.csdnimg.cn/20210528173318817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述">依次选择 2.任意组合安装——1.Xray-core——0.VLESS+TLS/XTLS+TCP</p>
+<p>安装好之后，浏览器打开自己的域名，可以看到伪装网站<br><img src="https://img-blog.csdnimg.cn/20210528173432590.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br><font color=red>注意了: 这里如果电脑打开不开这个域名(不能用外网打开)，就不要进行了，需要重新换过vps或者换过ip。</p>
+<p>之后安装BBR加速，重新再跑一次脚本：<br><img src="https://img-blog.csdnimg.cn/20210528173318817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>依次选择13——1安装脚本<br><img src="https://img-blog.csdnimg.cn/20210528174005951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述">之后会自动安装BBR，安装好之后再选11，开启BBR，然后重启服务端就好了 #reboot：</p>
+<p>重启后再跑一次脚本，输入3，1，复制记录下输出信息:<br><img src="https://img-blog.csdnimg.cn/20210528174307284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h1 id="电脑端Qv2ray客户端配置使用"><a href="#电脑端Qv2ray客户端配置使用" class="headerlink" title="电脑端Qv2ray客户端配置使用"></a>电脑端Qv2ray客户端配置使用</h1><p>这里去网上下载一个Qv2ray客户端就可以了</p>
+<p>Qv2ray与之前使用的v2rayN不同，核心需要单独下载，下载安装好客户端后，我们再根据系统下载核心，下载好是一个zip文件，我们先把他解压了：放在保存的地方，防止误删。<br>我们先打开客户端，选择preference –&gt; kernel Settings：<br><img src="https://img-blog.csdnimg.cn/2021052819533060.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>之后将 v@eay core executable Path选择为我们刚才下好解压出的xray核心文件夹中的xray，将v2ray assests directory改为xray核心文件夹：</p>
+<p><img src="https://img-blog.csdnimg.cn/20210528195353920.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>选好后点OK。</p>
+<p>之后如下添加节点，配置客户端。<br><img src="https://img-blog.csdnimg.cn/20210528195441667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="upload successful"></p>
+<p>点ok之后，可能需要重启一下客户端，再打开，新的节点就可以使用了。</p>
+<h1 id="移动端V2rayNG配置使用"><a href="#移动端V2rayNG配置使用" class="headerlink" title="移动端V2rayNG配置使用"></a>移动端V2rayNG配置使用</h1><p>地址填写域名就可以了，<br>用户id 就是上面服务端上的保存的那堆东西里的用户ID<br>flow 也在那堆东西里</p>
+<p><img src="https://img-blog.csdnimg.cn/20210528195632829.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><br>保存一下就可以，访问外网了。</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>
-                    
-                  </div>
                 
               </div>
               
@@ -264,18 +273,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/06/09/Untitled/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/06/08/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%A4%9A%E4%BA%BA%E5%9C%A8%E7%BA%BF%E8%81%8A%E5%A4%A9%E5%AE%A4/">
-                        <span class="hidden-mobile">PHP和jQuery创建一个简单的在线聊天工具</span>
+                      <a href="/2021/06/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8D%9A%E5%AE%A2/">
+                        <span class="hidden-mobile">我的第三个博客</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
