@@ -4,58 +4,65 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2021/06/12/Xray%E6%A2%AF%E5%AD%90%E6%90%AD%E5%BB%BA%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC%EF%BC%8C%E4%BB%A5%E5%8F%8AQv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
-    <url>/2021/06/12/Xray%E6%A2%AF%E5%AD%90%E6%90%AD%E5%BB%BA%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC%EF%BC%8C%E4%BB%A5%E5%8F%8AQv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <title>js高阶函数Filter/map/reduce</title>
+    <link href="/2021/07/03/js%E4%B8%AD%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/"/>
+    <url>/2021/07/03/js%E4%B8%AD%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/</url>
     
-    <content type="html"><![CDATA[<h2 id="Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程"><a href="#Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程" class="headerlink" title="Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程"></a>Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程</h2><p><font color=#999AAA >提示：开始前先准备<br>    1.购买一个vps（这里用的是vultr,别的也可以）<br>    2.购买一个域名<br>    3.下载sshr软件<br>    4.脚本安装Xray服务端</p><hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1"><h1 id="购买vps："><a href="#购买vps：" class="headerlink" title="购买vps："></a>购买vps：</h1><font color=black >  我现在用的vultr，首要原因可以随时删除服务器重建服务器，以达到换ip的效果，其次这是我见过有韩国日本节点的最便宜的一家，搭配联通宽带真的是无敌了。然后就是可以支付宝付款，很方便了。<p><font  color=red>首先注册vultr账号：vultr注册</font><br>注册好第一次进去会提示让你完善信息，首次使用之前需要充值最少10刀，之后进入控制台界面，点击products，然后点右上角的加号添加server。<br><img src="https://img-blog.csdnimg.cn/20210528171523578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">如图配置就好，如果有韩国建议选择韩国得，ping值会低很多<br><img src="https://img-blog.csdnimg.cn/20210528171746964.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>注意这里一定换成旁边的Debian 9，不然证书申请会出问题<br><img src="https://img-blog.csdnimg.cn/20210528171908314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后选择5美元/每月得就够用了 dploy now 就好了。等一分钟就可以running<br><img src="https://img-blog.csdnimg.cn/20210528172240912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210528172322378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>记住ip、username、password</p><h1 id="购买域名："><a href="#购买域名：" class="headerlink" title="购买域名："></a>购买域名：</h1><p>怎么购买域名我这里就不说了 解析选择上面得那个ip地址就好了<br>Xray同样与VMess，VLess，Trojan一样，也是走https，所以也需要有一个自己的域名为我们做掩护。</p><p>买域名的地方也很多，国内主要是腾讯云和阿里云，域名不需要在国外供应商买，哪里买都一样（国内买需要实名认证，而且认证需要一些时间。介意的还是直接在godaddy买吧）。腾讯阿里都有新人优惠，第一次购买域名，像.club, .xyz之类的小众域名基本只要1块一年，很便宜了</p><h1 id="脚本安装Xray服务端："><a href="#脚本安装Xray服务端：" class="headerlink" title="脚本安装Xray服务端："></a>脚本安装Xray服务端：</h1><p>这里下载putty为例 ，将ip填进去open<br><img src="https://img-blog.csdnimg.cn/20210528172839335.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后用刚刚记住得username和password登录(密码是隐藏复制右击在回车就好了)</p><p>打开服务端后，安装脚本</p><div class="code-wrapper"><pre><code class="hljs bash">wget -N --no-check-certificate <span class="hljs-string">&quot;https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh&quot;</span> &amp;&amp; chmod 700 /root/install.sh &amp;&amp; /root/install.sh</code></pre></div><p><img src="https://img-blog.csdnimg.cn/20210528173318817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">依次选择 2.任意组合安装——1.Xray-core——0.VLESS+TLS/XTLS+TCP</p><p>安装好之后，浏览器打开自己的域名，可以看到伪装网站<br><img src="https://img-blog.csdnimg.cn/20210528173432590.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><font color=red>注意了: 这里如果电脑打开不开这个域名(不能用外网打开)，就不要进行了，需要重新换过vps或者换过ip。</p><p>之后安装BBR加速，重新再跑一次脚本：<br><img src="https://img-blog.csdnimg.cn/20210528173318817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>依次选择13——1安装脚本<br><img src="https://img-blog.csdnimg.cn/20210528174005951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">之后会自动安装BBR，安装好之后再选11，开启BBR，然后重启服务端就好了 #reboot：</p><p>重启后再跑一次脚本，输入3，1，复制记录下输出信息:<br><img src="https://img-blog.csdnimg.cn/20210528174307284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h1 id="电脑端Qv2ray客户端配置使用"><a href="#电脑端Qv2ray客户端配置使用" class="headerlink" title="电脑端Qv2ray客户端配置使用"></a>电脑端Qv2ray客户端配置使用</h1><p>这里去网上下载一个Qv2ray客户端就可以了</p><p>Qv2ray与之前使用的v2rayN不同，核心需要单独下载，下载安装好客户端后，我们再根据系统下载核心，下载好是一个zip文件，我们先把他解压了：放在保存的地方，防止误删。<br>我们先打开客户端，选择preference –&gt; kernel Settings：<br><img src="https://img-blog.csdnimg.cn/2021052819533060.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>之后将 v@eay core executable Path选择为我们刚才下好解压出的xray核心文件夹中的xray，将v2ray assests directory改为xray核心文件夹：</p><p><img src="https://img-blog.csdnimg.cn/20210528195353920.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>选好后点OK。</p><p>之后如下添加节点，配置客户端。<br><img src="https://img-blog.csdnimg.cn/20210528195441667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="upload successful"></p><p>点ok之后，可能需要重启一下客户端，再打开，新的节点就可以使用了。</p><h1 id="移动端V2rayNG配置使用"><a href="#移动端V2rayNG配置使用" class="headerlink" title="移动端V2rayNG配置使用"></a>移动端V2rayNG配置使用</h1><p>地址填写域名就可以了，<br>用户id 就是上面服务端上的保存的那堆东西里的用户ID<br>flow 也在那堆东西里</p><p><img src="https://img-blog.csdnimg.cn/20210528195632829.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>保存一下就可以，访问外网了。</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>我的第三个博客</title>
-    <link href="/2021/06/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8D%9A%E5%AE%A2/"/>
-    <url>/2021/06/09/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8D%9A%E5%AE%A2/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title></title>
-    <link href="/2021/06/09/Untitled/"/>
-    <url>/2021/06/09/Untitled/</url>
-    
-    <content type="html"><![CDATA[<p><img src="./1623227711490.png"><br>复制文sssdasdas件测试页面sssss</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>创建博客</title>
-    <link href="/2021/06/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
-    <url>/2021/06/08/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    
-    <content type="html"><![CDATA[<h2 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h2><ol><li>搭建环境git、node.js、hexo</li><li>cmd进入hexo的文件夹 新建md$hexo new “博客命名”<br> 博客创建在source/_posts文件夹中</li><li><div class="code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>我的的<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div></li></ol><hr><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><h2 id="内容"><a href="#内容" class="headerlink" title=" 内容"></a> 内容</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="http://www.xxxx.cn/">www.xxxx.cn</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="filter-map-reduce三个高阶函数"><a href="#filter-map-reduce三个高阶函数" class="headerlink" title="filter()/map()/reduce三个高阶函数"></a>filter()/map()/reduce三个高阶函数</h2><div class="code-wrapper"><pre><code class="hljs h"><span class="hljs-keyword">const</span> aa=[<span class="hljs-number">11</span>,<span class="hljs-number">23</span>,<span class="hljs-number">44</span>,<span class="hljs-number">55</span>,<span class="hljs-number">120</span>,<span class="hljs-number">555</span>] <span class="hljs-comment">//找出所有小于50的数字</span> let newnum1=aa.filter(function(n)&#123;     <span class="hljs-keyword">return</span> n &lt; <span class="hljs-number">50</span>; &#125;) <span class="hljs-comment">//将得到的数字都乘于2</span> let newnum2=newnum1.<span class="hljs-built_in">map</span>(function(n)&#123;     <span class="hljs-keyword">return</span> n * <span class="hljs-number">2</span> &#125;) <span class="hljs-comment">//将得到的数字进行汇总</span> let newnum3=newnum2.reduce(function(preValue,n)&#123;     <span class="hljs-keyword">return</span> prevalue + n &#125;,<span class="hljs-number">0</span>)</code></pre></div><h3 id="更加简便的方法"><a href="#更加简便的方法" class="headerlink" title="更加简便的方法"></a>更加简便的方法</h3><div class="code-wrapper"><pre><code class="hljs h">let sum=aa.filter(function(n)&#123;    <span class="hljs-keyword">return</span> n&gt; <span class="hljs-number">50</span>&#125;).<span class="hljs-built_in">map</span>(function(n)&#123;    <span class="hljs-keyword">return</span> n * <span class="hljs-number">2</span>&#125;).reduce(function(preValue,n)&#123;    <span class="hljs-keyword">return</span> preValue + n&#125;)<span class="hljs-comment">//把他简便成箭头函数</span>let sum=aa.filter(n =&gt; n&gt; <span class="hljs-number">50</span>).<span class="hljs-built_in">map</span>(n =&gt; n * <span class="hljs-number">2</span>).reduce((preValue,n) =&gt; preValue + n)</code></pre></div>]]></content>
     
     
     
     <tags>
       
-      <tag>Hexo</tag>
+      <tag>js</tag>
       
-      <tag>博客</tag>
+      <tag>函数</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>PHP获取文件下所有子目录.md</title>
+    <link href="/2021/06/19/PHP%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E4%B8%8B%E6%89%80%E6%9C%89%E5%AD%90%E7%9B%AE%E5%BD%95/"/>
+    <url>/2021/06/19/PHP%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E4%B8%8B%E6%89%80%E6%9C%89%E5%AD%90%E7%9B%AE%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="php获取某目录所有子目录-输出多维数组格式"><a href="#php获取某目录所有子目录-输出多维数组格式" class="headerlink" title="php获取某目录所有子目录 输出多维数组格式"></a>php获取某目录所有子目录 输出多维数组格式</h1><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xf_scandir</span>(<span class="hljs-params"><span class="hljs-variable">$dir</span></span>)</span><span class="hljs-function"></span>&#123;     <span class="hljs-variable">$files</span> = <span class="hljs-keyword">array</span>();     <span class="hljs-keyword">if</span>( <span class="hljs-variable">$handle</span>=opendir(<span class="hljs-variable">$dir</span>) )&#123;                             <span class="hljs-comment">//$handle=Resource id #3</span>        <span class="hljs-keyword">while</span>( (<span class="hljs-variable">$file</span> = readdir(<span class="hljs-variable">$handle</span>)) !== <span class="hljs-literal">false</span> )&#123;       <span class="hljs-comment">//echo $file;echo &quot;&lt;hr&gt;&quot;; //$file分别是 .  ..   a.php   b.php   c</span>            <span class="hljs-keyword">if</span>( <span class="hljs-variable">$file</span> != <span class="hljs-string">&quot;..&quot;</span> &amp;&amp; <span class="hljs-variable">$file</span> != <span class="hljs-string">&quot;.&quot;</span>&amp;&amp;!strpos(<span class="hljs-variable">$file</span>,<span class="hljs-string">&quot;.&quot;</span>)&amp;&amp; <span class="hljs-variable">$file</span> != <span class="hljs-string">&quot;B&quot;</span> )&#123;<span class="hljs-comment">//这里控制不选择什么文件夹或什么类型文件后缀</span>                <span class="hljs-keyword">if</span>( is_dir(<span class="hljs-variable">$dir</span> . <span class="hljs-string">&quot;/&quot;</span> . <span class="hljs-variable">$file</span>) )&#123;   <span class="hljs-comment">//文件夹c           </span>                        <span class="hljs-variable">$files</span>[<span class="hljs-variable">$file</span>] = xf_scandir(<span class="hljs-variable">$dir</span> . <span class="hljs-string">&quot;/&quot;</span> . <span class="hljs-variable">$file</span>);                                                      &#125;<span class="hljs-keyword">else</span>&#123;                              <span class="hljs-comment">//文件a.php,b.php                 </span>                    <span class="hljs-variable">$files</span>[] = <span class="hljs-variable">$file</span>;                          <span class="hljs-comment">//var_dump($file);echo &quot;&lt;hr&gt;&quot;;//分别是 a.php  b.php</span>                &#125;            &#125;        &#125;        closedir(<span class="hljs-variable">$handle</span>);        <span class="hljs-keyword">return</span> <span class="hljs-variable">$files</span>;    &#125;&#125;<span class="hljs-variable">$re</span>=xf_scandir(<span class="hljs-string">&#x27;../../domain&#x27;</span>);<span class="hljs-keyword">echo</span>(json_encode(<span class="hljs-variable">$re</span>));<span class="hljs-comment">// // var_dump($re);</span><span class="hljs-comment">// print_r($re)</span></code></pre></div><h1 id="php获取某目录所有子目录-输出文件名"><a href="#php获取某目录所有子目录-输出文件名" class="headerlink" title="php获取某目录所有子目录 输出文件名"></a>php获取某目录所有子目录 输出文件名</h1><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-variable">$path</span> = <span class="hljs-string">&#x27;../../domain&#x27;</span>;getDir(<span class="hljs-variable">$path</span>);<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDir</span>(<span class="hljs-params"><span class="hljs-variable">$path</span></span>)</span>&#123;    <span class="hljs-keyword">if</span>(is_dir(<span class="hljs-variable">$path</span>))&#123;        <span class="hljs-variable">$dir</span> =  scandir(<span class="hljs-variable">$path</span>);        <span class="hljs-keyword">foreach</span> (<span class="hljs-variable">$dir</span> <span class="hljs-keyword">as</span> <span class="hljs-variable">$value</span>)&#123;            <span class="hljs-variable">$sub_path</span> =<span class="hljs-variable">$path</span> .<span class="hljs-string">&#x27;/&#x27;</span>.<span class="hljs-variable">$value</span>;            <span class="hljs-keyword">if</span>(<span class="hljs-variable">$value</span> == <span class="hljs-string">&#x27;.&#x27;</span> || <span class="hljs-variable">$value</span> == <span class="hljs-string">&#x27;..&#x27;</span>)&#123;                <span class="hljs-keyword">continue</span> ;            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(is_dir(<span class="hljs-variable">$sub_path</span>))&#123;                <span class="hljs-variable">$str</span> =<span class="hljs-variable">$path</span>.<span class="hljs-string">&#x27;/&#x27;</span>.<span class="hljs-variable">$value</span>.<span class="hljs-string">&#x27;&lt;br/&gt;&#x27;</span> ;                <span class="hljs-comment">// $arry= explode(&#x27;/&#x27;,$str);</span>                <span class="hljs-comment">// get_xiangmu($arry);</span>                <span class="hljs-keyword">echo</span> <span class="hljs-variable">$str</span>;                <span class="hljs-comment">// print_r($arry);</span>                <span class="hljs-comment">// echo(&quot;&lt;br/&gt;&quot;);</span>                <span class="hljs-comment">// echo($arry);</span>            <span class="hljs-comment">//   print_r (explode(&#x27;/&#x27;,$str,-1));</span>                getDir(<span class="hljs-variable">$sub_path</span>);            &#125;        &#125;    &#125;&#125;</code></pre></div>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>PHP</tag>
+      
+      <tag>数组</tag>
+      
+      <tag>获取文件夹</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>js数组格式字符串转换成数组</title>
+    <link href="/2021/06/19/js%E6%95%B0%E7%BB%84%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B0%E7%BB%84/"/>
+    <url>/2021/06/19/js%E6%95%B0%E7%BB%84%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B0%E7%BB%84/</url>
+    
+    <content type="html"><![CDATA[<p>方法1：使用eval() 函数,可计算某个字符串，并执行其中的的 JavaScript 代码。</p><p><a href="https://img-blog.csdn.net/20180823173218936?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNDI5ODk5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">https://img-blog.csdn.net/20180823173218936?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNDI5ODk5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a></p><p>方法二，数组的类型也是对象，因此可以用JSON.parse将数组转换成对象</p><p> JSON.parse() 方法用于将一个 JSON 字符串转换为对象。<br> 如果报错:VM38152:1 Uncaught SyntaxError: Unexpected token o in JSON at position 1<br> 是因为 JSON格式问题  要是双引号不能是单引号<br><a href="https://img-blog.csdn.net/20180823173928519?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNDI5ODk5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">https://img-blog.csdn.net/20180823173928519?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNDI5ODk5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>JSON</tag>
+      
+      <tag>js</tag>
+      
+      <tag>数组</tag>
       
     </tags>
     
@@ -87,13 +94,21 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/2021/06/08/hello-world/"/>
-    <url>/2021/06/08/hello-world/</url>
+    <title>Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程</title>
+    <link href="/2021/06/07/Xray%E6%A2%AF%E5%AD%90%E6%90%AD%E5%BB%BA%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC%EF%BC%8C%E4%BB%A5%E5%8F%8AQv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
+    <url>/2021/06/07/Xray%E6%A2%AF%E5%AD%90%E6%90%AD%E5%BB%BA%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC%EF%BC%8C%E4%BB%A5%E5%8F%8AQv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程"><a href="#Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程" class="headerlink" title="Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程"></a>Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程</h2><p><font color=#999AAA >提示：开始前先准备<br>    1.购买一个vps（这里用的是vultr,别的也可以）<br>    2.购买一个域名<br>    3.下载sshr软件<br>    4.脚本安装Xray服务端</p><hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1"><h1 id="购买vps："><a href="#购买vps：" class="headerlink" title="购买vps："></a>购买vps：</h1><font color=black >  我现在用的vultr，首要原因可以随时删除服务器重建服务器，以达到换ip的效果，其次这是我见过有韩国日本节点的最便宜的一家，搭配联通宽带真的是无敌了。然后就是可以支付宝付款，很方便了。<p><font  color=red>首先注册vultr账号：vultr注册</font><br>注册好第一次进去会提示让你完善信息，首次使用之前需要充值最少10刀，之后进入控制台界面，点击products，然后点右上角的加号添加server。<br><img src="https://img-blog.csdnimg.cn/20210528171523578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">如图配置就好，如果有韩国建议选择韩国得，ping值会低很多<br><img src="https://img-blog.csdnimg.cn/20210528171746964.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>注意这里一定换成旁边的Debian 9，不然证书申请会出问题<br><img src="https://img-blog.csdnimg.cn/20210528171908314.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后选择5美元/每月得就够用了 dploy now 就好了。等一分钟就可以running<br><img src="https://img-blog.csdnimg.cn/20210528172240912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210528172322378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>记住ip、username、password</p><h1 id="购买域名："><a href="#购买域名：" class="headerlink" title="购买域名："></a>购买域名：</h1><p>怎么购买域名我这里就不说了 解析选择上面得那个ip地址就好了<br>Xray同样与VMess，VLess，Trojan一样，也是走https，所以也需要有一个自己的域名为我们做掩护。</p><p>买域名的地方也很多，国内主要是腾讯云和阿里云，域名不需要在国外供应商买，哪里买都一样（国内买需要实名认证，而且认证需要一些时间。介意的还是直接在godaddy买吧）。腾讯阿里都有新人优惠，第一次购买域名，像.club, .xyz之类的小众域名基本只要1块一年，很便宜了</p><h1 id="脚本安装Xray服务端："><a href="#脚本安装Xray服务端：" class="headerlink" title="脚本安装Xray服务端："></a>脚本安装Xray服务端：</h1><p>这里下载putty为例 ，将ip填进去open<br><img src="https://img-blog.csdnimg.cn/20210528172839335.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后用刚刚记住得username和password登录(密码是隐藏复制右击在回车就好了)</p><p>打开服务端后，安装脚本</p><div class="code-wrapper"><pre><code class="hljs bash">wget -N --no-check-certificate <span class="hljs-string">&quot;https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh&quot;</span> &amp;&amp; chmod 700 /root/install.sh &amp;&amp; /root/install.sh</code></pre></div><p><img src="https://img-blog.csdnimg.cn/20210528173318817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">依次选择 2.任意组合安装——1.Xray-core——0.VLESS+TLS/XTLS+TCP</p><p>安装好之后，浏览器打开自己的域名，可以看到伪装网站<br><img src="https://img-blog.csdnimg.cn/20210528173432590.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><font color=red>注意了: 这里如果电脑打开不开这个域名(不能用外网打开)，就不要进行了，需要重新换过vps或者换过ip。</p><p>之后安装BBR加速，重新再跑一次脚本：<br><img src="https://img-blog.csdnimg.cn/20210528173318817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>依次选择13——1安装脚本<br><img src="https://img-blog.csdnimg.cn/20210528174005951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">之后会自动安装BBR，安装好之后再选11，开启BBR，然后重启服务端就好了 #reboot：</p><p>重启后再跑一次脚本，输入3，1，复制记录下输出信息:<br><img src="https://img-blog.csdnimg.cn/20210528174307284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h1 id="电脑端Qv2ray客户端配置使用"><a href="#电脑端Qv2ray客户端配置使用" class="headerlink" title="电脑端Qv2ray客户端配置使用"></a>电脑端Qv2ray客户端配置使用</h1><p>这里去网上下载一个Qv2ray客户端就可以了</p><p>Qv2ray与之前使用的v2rayN不同，核心需要单独下载，下载安装好客户端后，我们再根据系统下载核心，下载好是一个zip文件，我们先把他解压了：放在保存的地方，防止误删。<br>我们先打开客户端，选择preference –&gt; kernel Settings：<br><img src="https://img-blog.csdnimg.cn/2021052819533060.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>之后将 v@eay core executable Path选择为我们刚才下好解压出的xray核心文件夹中的xray，将v2ray assests directory改为xray核心文件夹：</p><p><img src="https://img-blog.csdnimg.cn/20210528195353920.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>选好后点OK。</p><p>之后如下添加节点，配置客户端。<br><img src="https://img-blog.csdnimg.cn/20210528195441667.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="upload successful"></p><p>点ok之后，可能需要重启一下客户端，再打开，新的节点就可以使用了。</p><h1 id="移动端V2rayNG配置使用"><a href="#移动端V2rayNG配置使用" class="headerlink" title="移动端V2rayNG配置使用"></a>移动端V2rayNG配置使用</h1><p>地址填写域名就可以了，<br>用户id 就是上面服务端上的保存的那堆东西里的用户ID<br>flow 也在那堆东西里</p><p><img src="https://img-blog.csdnimg.cn/20210528195632829.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzUwMjU3Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>保存一下就可以，访问外网了。</p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>vpn</tag>
+      
+      <tag>VPS</tag>
+      
+    </tags>
     
   </entry>
   

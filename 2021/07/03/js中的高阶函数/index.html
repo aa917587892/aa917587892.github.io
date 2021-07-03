@@ -18,9 +18,25 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-  <title>Archives - Hexo</title>
+  <title>js高阶函数Filter/map/reduce - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -147,9 +163,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Archive">
+            <span class="h2" id="subtitle" title="js高阶函数Filter/map/reduce">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-03 17:20" pubdate>
+        July 3, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      148 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -162,58 +215,111 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">5 posts in total.</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/06/19/PHP%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E4%B8%8B%E6%89%80%E6%9C%89%E5%AD%90%E7%9B%AE%E5%BD%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">PHP获取文件下所有子目录.md</span>
-      <time style="float: right;">06-19</time>
-    </a>
-  
-    
-    <a href="/2021/06/19/js%E6%95%B0%E7%BB%84%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B0%E7%BB%84/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">js数组格式字符串转换成数组</span>
-      <time style="float: right;">06-19</time>
-    </a>
-  
-    
-    <a href="/2021/06/08/%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%A4%9A%E4%BA%BA%E5%9C%A8%E7%BA%BF%E8%81%8A%E5%A4%A9%E5%AE%A4/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">PHP和jQuery创建一个简单的在线聊天工具</span>
-      <time style="float: right;">06-08</time>
-    </a>
-  
-    
-    <a href="/2021/06/07/Xray%E6%A2%AF%E5%AD%90%E6%90%AD%E5%BB%BA%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC%EF%BC%8C%E4%BB%A5%E5%8F%8AQv2ray%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Xray梯子搭建一键脚本，以及Qv2ray客户端配置使用教程</span>
-      <time style="float: right;">06-07</time>
-    </a>
-  
-</div>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">js高阶函数Filter/map/reduce</h1>
+            
+            <div class="markdown-body">
+              <h2 id="filter-map-reduce三个高阶函数"><a href="#filter-map-reduce三个高阶函数" class="headerlink" title="filter()/map()/reduce三个高阶函数"></a>filter()/map()/reduce三个高阶函数</h2><div class="code-wrapper"><pre><code class="hljs h">
+<span class="hljs-keyword">const</span> aa=[<span class="hljs-number">11</span>,<span class="hljs-number">23</span>,<span class="hljs-number">44</span>,<span class="hljs-number">55</span>,<span class="hljs-number">120</span>,<span class="hljs-number">555</span>] 
+
+<span class="hljs-comment">//找出所有小于50的数字</span>
+ let newnum1=aa.filter(function(n)&#123;
+     <span class="hljs-keyword">return</span> n &lt; <span class="hljs-number">50</span>;
+ &#125;)
+ <span class="hljs-comment">//将得到的数字都乘于2</span>
+ let newnum2=newnum1.<span class="hljs-built_in">map</span>(function(n)&#123;
+     <span class="hljs-keyword">return</span> n * <span class="hljs-number">2</span>
+ &#125;)
+ <span class="hljs-comment">//将得到的数字进行汇总</span>
+ let newnum3=newnum2.reduce(function(preValue,n)&#123;
+     <span class="hljs-keyword">return</span> prevalue + n
+ &#125;,<span class="hljs-number">0</span>)
+</code></pre></div>
+<h3 id="更加简便的方法"><a href="#更加简便的方法" class="headerlink" title="更加简便的方法"></a>更加简便的方法</h3><div class="code-wrapper"><pre><code class="hljs h">let sum=aa.filter(function(n)&#123;
+    <span class="hljs-keyword">return</span> n&gt; <span class="hljs-number">50</span>
+&#125;).<span class="hljs-built_in">map</span>(function(n)&#123;
+    <span class="hljs-keyword">return</span> n * <span class="hljs-number">2</span>
+&#125;).reduce(function(preValue,n)&#123;
+    <span class="hljs-keyword">return</span> preValue + n
+&#125;)
+
+<span class="hljs-comment">//把他简便成箭头函数</span>
+let sum=aa.filter(n =&gt; n&gt; <span class="hljs-number">50</span>).<span class="hljs-built_in">map</span>(n =&gt; n * <span class="hljs-number">2</span>).reduce((preValue,n) =&gt; preValue + n)
 
 
-
-
-
-              </div>
+</code></pre></div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/js/">js</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%87%BD%E6%95%B0/">函数</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/19/PHP%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E4%B8%8B%E6%89%80%E6%9C%89%E5%AD%90%E7%9B%AE%E5%BD%95/">
+                        <span class="hidden-mobile">PHP获取文件下所有子目录.md</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -293,9 +399,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
