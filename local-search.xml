@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>Vue的学习</title>
+    <link href="/2021/07/19/Vue%E7%9A%84%E5%AD%A6%E4%B9%A0/"/>
+    <url>/2021/07/19/Vue%E7%9A%84%E5%AD%A6%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="第6天学习"><a href="#第6天学习" class="headerlink" title="第6天学习"></a>第6天学习</h2><div class="code-wrapper"><pre><code>v-bind绑定属性值 简写&quot;:&quot; 例如: :class=&quot;data&quot; :for=&quot;data&quot;v-model双向绑定值 例如： &lt;input type=&quot;text&quot; v-mode=&quot;data&quot;&gt; 只要input发生改变data中数据也会改变        修饰符：v-model.lazy 例如&lt;input type=&quot;text&quot;  v-mode=&quot;data&quot;&gt;当input失去光标才调用v-model                v-model.number 例如&lt;input type=&quot;number&quot;  v-mode=&quot;data&quot;&gt;v-model双向绑定都是string类型 加上number变得数字类型                v-model.trim 例如&lt;input type=&quot;text&quot;  v-mode=&quot;data&quot;&gt; input输入空格会使data数据也有空格。所以加上修饰符会去掉所有空格</code></pre></div>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>vue</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>js高阶函数Filter/map/reduce</title>
     <link href="/2021/07/03/js%E4%B8%AD%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/"/>
     <url>/2021/07/03/js%E4%B8%AD%E7%9A%84%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/</url>
