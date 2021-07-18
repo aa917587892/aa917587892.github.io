@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      1.4k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      15
+      20
        分钟
     </span>
   
@@ -372,6 +372,62 @@ methods:&#123;
 &lt;/template&gt;
 
 </code></pre></div>
+
+<h2 id="模块化开发"><a href="#模块化开发" class="headerlink" title="模块化开发"></a>模块化开发</h2><h3 id="1-模块化最基础封装"><a href="#1-模块化最基础封装" class="headerlink" title="1.模块化最基础封装"></a>1.模块化最基础封装</h3><div class="code-wrapper"><pre><code><pre><code class="hljs php"><span class="hljs-comment">// A.js</span>
+<span class="hljs-keyword">var</span> moduleA=(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-comment">// 定义一个对象</span>
+    <span class="hljs-keyword">var</span> obj=&#123;&#125;
+    <span class="hljs-number">2</span>.在对象内部添加变量喝方法
+    obj.flag = <span class="hljs-string">&quot;true&quot;</span>;
+    obj.myFunc = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">info</span>)</span>&#123;
+        console.log(info)
+    &#125;
+    <span class="hljs-comment">// 3.将对象返回</span>
+    <span class="hljs-keyword">return</span> obj
+&#125;)</code></pre></div>
+<div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-comment">// B.js</span>
+    &lt;script src=<span class="hljs-string">&quot;A.js&quot;</span>&gt;&lt;/script&gt;
+    console.log(modeleA.flag);
+    moduleA.myFunc(<span class="hljs-string">&quot;我真帅&quot;</span>)</code></pre></div>
+幸运的是前端模块化开发已经有很多既有的规范了
+常见的模块化规范:
+CommonJS/AMD/CMD也有ES6的Modules
+模块化核心就是导入和导出
+</code></pre>
+<h4 id="2-ES模块化导入导出"><a href="#2-ES模块化导入导出" class="headerlink" title="2.ES模块化导入导出"></a>2.ES模块化导入导出</h4><div class="code-wrapper"><pre><code class="hljs php"><span class="hljs-comment">// 在引用的script 类型要是module</span>
+&lt;script src=<span class="hljs-string">&quot;./a.js&quot;</span> type=<span class="hljs-string">&quot;module&quot;</span>&gt;&lt;/script&gt;
+&lt;script src=<span class="hljs-string">&quot;./B.js&quot;</span> type=<span class="hljs-string">&quot;module&quot;</span>&gt;&lt;/script&gt;
+
+<span class="hljs-comment">// a.js</span>
+    <span class="hljs-keyword">var</span> name=<span class="hljs-string">&quot;你好&quot;</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params">num1,mun2</span>)</span>&#123;
+        <span class="hljs-keyword">return</span> num1+num2;
+    &#125;
+    export&#123;
+        name,sum
+    &#125;
+    <span class="hljs-comment">//方法2</span>
+    export <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum2</span>(<span class="hljs-params">num1,num2</span>)</span>&#123;
+        <span class="hljs-keyword">return</span> num1+num2
+    &#125;
+        <span class="hljs-comment">//在某些情况我们并不希望给这个功能命名 让导入者自己命名对应的名字,但只能导出一个</span>
+        export defalut <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;&#125;
+        <span class="hljs-comment">//导入的文件js</span>
+        import aaaa <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./a.js&quot;</span>
+<span class="hljs-comment">// B.js</span>
+import&#123;name,sum&#125;form <span class="hljs-string">&quot;./a.js&quot;</span>;
+console.log(name)
+console.loh(sum(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>));
+    <span class="hljs-comment">//全部导入的方法</span>
+    import * <span class="hljs-keyword">as</span> aaa form <span class="hljs-string">&quot;./a.js&quot;</span>
+     console.log(aaa.name)
+
+</code></pre></div>
+
+
+<h2 id="Webpack的使用"><a href="#Webpack的使用" class="headerlink" title="Webpack的使用"></a>Webpack的使用</h2><div class="code-wrapper"><pre><code>JS的静态模块化打包工具
+</code></pre></div>
+
             </div>
             <hr>
             <div>
